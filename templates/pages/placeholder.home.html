@@ -1,0 +1,77 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="header">
+        <div class="logo-wrapper">
+          <span class="logo">CAML</span>
+        </div>
+        <div class="links">
+            <a class="help" href="help.html">Help</a>
+            <a class="about" href="about.html">About</a>
+        </div>
+    </div>
+    <div class="content row">
+        <div class="left-card col-md-8">
+              <div class="card">
+                    <div class="card-item top">
+                        <div class="add-file-button">
+                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            <span>Add your file</span>
+                            <input type='file' name="file" id="upload" style="display: none;"/>
+                        </div>
+                        <div class="loaded-file-info">
+                            <p class="file-name"></p>
+                            <p class="file-size"></p>
+                        </div>
+                    </div>
+                    <div class="card-item form">
+                        <label>How many cohorts?</label>
+                        <input type="text" name="txt_cohorCount" id = "cohor_count"/>
+                    </div>
+                    <div class="card-item button-wrapper">
+                    <button onclick="run()" method="POST" >Run</button>
+                    </div>
+              </div>
+        </div>
+        <div class="right-panel col-md-9">
+          <div id="right_container" class="right_container">
+            <div class="right_txt">
+              With the CAML tool you can leverage big data to find insight not currently avaible in the market
+            </div>
+
+            <div class="right_img">
+              <img src="/static/img/first_page.png" >
+            </div>
+          </div>
+        </div>
+
+        <div class="result_container">
+            <div id="result_title" class="result_title"></div>
+            <div id="result_table" class="result_table"></div>
+        </div>
+    </div>
+</div>
+<div class="loading-wrapper">
+    <img src="/static/img/loading.gif"/>
+    <span>Processing...</span>
+</div>
+<div id="chart-container" class="chart-container"></div>
+
+
+<!--&lt;!&ndash; Trigger the modal with a button &ndash;&gt;-->
+<!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content" style=" width: fit-content;">
+      <div class="modal-body">
+        <p id="modal-text"></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
